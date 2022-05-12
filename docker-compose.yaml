@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  nvim:
+    build:
+      dockerfile: ./Dockerfile
+      args:
+        UID: 1000
+        GID: 1000
+        UNAME: epixors
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          memory: 8G
+    network_mode: host
+    ports:
+      - "1234:1234"
+      - "8080:8080"
+      - "6379:6379"
+      - "8983:8983"
+      - "8000:8000"
+      - "4200:4200"
+    volumes:
+      - $HOME/checkouts/git:/home/epixors/workspace # Must match UNAME
+      - $HOME/.ssh:/home/epixors/.ssh
+      - $HOME/.aws:/home/epixors/.aws
+      - /var/run/docker.sock:/var/run/docker.sock

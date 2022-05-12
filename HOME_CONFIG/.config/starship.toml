@@ -1,0 +1,8 @@
+[username]
+disabled = true
+
+[hostname]
+disabled = true
+
+[container]
+disabled = true
