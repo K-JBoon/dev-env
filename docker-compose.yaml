@@ -3,6 +3,7 @@ version: '3.8'
 services:
   nvim:
     build:
+      context: .
       dockerfile: ./Dockerfile
       args:
         UID: 1000
